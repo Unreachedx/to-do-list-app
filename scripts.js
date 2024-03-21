@@ -3,3 +3,5 @@ list.append("<li>list something</li>");
 
 let li = $('<li></li>');
 list.append(li);
+
+$('.selectedElement').append('<li>some item</li>')
