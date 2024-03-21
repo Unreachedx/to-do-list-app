@@ -1,7 +1,7 @@
 $(document).ready(function(){
   let li = $("<li></li>");
   let inputValue = $("#input").val();
-  let text = $("<span></span>").text(inputValue);
+  let text = $("<p></p>").text(inputValue);
   li.append(text);
 
   if (inputValue === '') {
