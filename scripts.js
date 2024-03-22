@@ -1,28 +1,40 @@
-$(document).ready(function(){
-  let li = $("<li></li>");
-  let inputValue = $("#input").val();
-  let text = $("<p></p>").text(inputValue);
-  li.append(text);
+function newItem() {
+    let inputValue = $("#input").val().trim(); // Fetch input value and trim any whitespace
 
-  if (inputValue === '') {
-      alert("You must write something!");
-  } else {
-      $("#list").append(li);
+    if (inputValue === '') {
+        alert("You must write something!");
+    } else {
+        let li = $("<li></li>");
+        let text = $("<p></p>").text(inputValue);
+        li.append(text);
 
-      // Event handler for double-clicking to strike out an item
-      li.on("dblclick", function() {
-          $(this).toggleClass("strike");
-      });
+        $("#list").append(li);
 
-      // Adding the delete button
-      let crossOutButton = $('<button>X</button>');
-      li.append(crossOutButton);
+        // Event handler for double-clicking to strike out an item
+        li.on("dblclick", function () {
+            $(this).toggleClass("strike");
+        });
 
-      // Event handler for deleting an item
-      crossOutButton.on('click', function() {
-          li.addClass("delete");
-      });
-  }
+        // Adding the delete button
+        let crossOutButton = $('<button>X</button>');
+        li.append(crossOutButton);
 
-  $("#list").sortable(); // Make the list sortable
+        // Event handler for deleting an item
+        crossOutButton.on('click', function () {
+            li.addClass("delete");
+        });
+    }
+}
+
+$(document).ready(function () {
+    $("#button").click(function () {
+        newItem();
+    });
+
+    $("#toDoForm").submit(function (e) {
+        e.preventDefault(); // Prevent form submission
+        newItem();
+    });
+
+    $("#list").sortable(); // Make the list sortable
 });
