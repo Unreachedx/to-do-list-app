@@ -25,16 +25,3 @@ function newItem() {
         });
     }
 }
-
-$(document).ready(function () {
-    $("#button").click(function () {
-        newItem();
-    });
-
-    $("#toDoForm").submit(function (e) {
-        e.preventDefault(); // Prevent form submission
-        newItem();
-    });
-
-    $("#list").sortable(); // Make the list sortable
-});
